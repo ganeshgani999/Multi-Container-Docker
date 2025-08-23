@@ -1,0 +1,60 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    env_file:
+      - ./env/mongodb.env
+    networks:
+      - goals-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    networks:
+      - goals-network
+    volumes:
+      - logs:/app/logs
+      - ./backend:/ap
+      - /app/node_modules
+    env_file: ./env/backend.env
+    depends_on:
+      - mongodb
+
+
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/app/src
+    networks:
+      - goals-network
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+
+
+
+
+
+
+
+
+volumes:
+  mongodb_data:
+  logs:
+
+networks:
+  goals-network:
