@@ -8,4 +8,4 @@
 // Testing the git
 // Testing the git
 
-<p>New commited</p>
+<p>New Branch commited</p>
