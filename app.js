@@ -1,11 +1,2 @@
-// Testing the git
-// Testing the git
-// Testing the git
-// Testing the git
-// Testing the git
 
-// Testing the git
-// Testing the git
-// Testing the git
-
-<p>New Branch commited</p>
+<p>New Branching stragies</p>
